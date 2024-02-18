@@ -1,0 +1,105 @@
+
+//+------------------------------------------------------------------+
+//|                                           Wardtrade17.mq5       |
+//|                  Copyright 2022, Forex Robot Easy Team           |
+//|                                http://www.forexroboteasy.com      |
+//+------------------------------------------------------------------+
+#property copyright 'Copyright 2022, Forex Robot Easy Team'
+#property link      'http://www.forexroboteasy.com'
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+   // Set trading symbol
+   string symbol = 'EURUSD';
+   
+   // Set trading timeframe to 1 hour (H1)
+   ENUM_TIMEFRAMES timeframe = PERIOD_H1;
+   
+   // Set trading hours to align with Cairo time
+   int utc_offset = 2;
+   
+   // Check if it's Monday
+   if (TimeDayOfWeek(TimeCurrent()) == 1)
+   {
+      // Check if current time is within trading hours
+      if (TimeHour(TimeCurrent()) >= utc_offset && TimeHour(TimeCurrent()) <= utc_offset + 1)
+      {
+         // Check if account balance is sufficient
+         double account_balance = AccountBalance();
+         double minimum_deposit = 500;
+         
+         if (account_balance >= minimum_deposit)
+         {
+            // Execute trading logic here
+            // ...
+            // ...
+            // ...
+            // ...
+            
+            // Place buy/sell orders
+            // ...
+            // ...
+            // ...
+            // ...
+            
+            // Calculate potential returns
+            double annual_profit_range = 10.0; // Assuming minimum value
+            double potential_return = account_balance * annual_profit_range / 100;
+            
+            // Check if potential return is within the specified range
+            if (potential_return >= minimum_deposit * 0.1 && potential_return <= minimum_deposit * 0.42)
+            {
+               // Code for generating returns
+               // ...
+               // ...
+               // ...
+               // ...
+               
+               // Print trading results
+               Print('Trading operation successful. Potential return: ', potential_return);
+            }
+            else
+            {
+               Print('Potential return is not within the specified range.');
+            }
+         }
+         else
+         {
+            Print('Insufficient account balance. Minimum deposit required: ', minimum_deposit);
+         }
+      }
+      else
+      {
+         Print('Trading hours not within the specified range.');
+      }
+   }
+   else
+   {
+      Print('Not a Monday. Trading operation skipped.');
+   }
+   
+   return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//| Expert deinitialization function                                 |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+   // Perform any necessary cleanup actions here
+   // ...
+   // ...
+   // ...
+   // ...
+}
+
+//+------------------------------------------------------------------+
+//| Expert tick function                                             |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+   // No action required in this example
+}
